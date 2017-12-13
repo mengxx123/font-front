@@ -36,7 +36,7 @@
     export default {
         data () {
             return {
-                text: '陈建杭',
+                text: '小明',
                 color: '#000000',
                 bgColor: '#ffffff',
                 image: 'http://localhost:1027/tmp/47fe4440-dfda-11e7-a3e1-71844063d4aa.svg'
