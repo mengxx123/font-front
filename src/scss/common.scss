@@ -1,1 +1,29 @@
-// TODO
+html,
+body,
+#app,
+.page {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+.container-main {
+    padding-top: 32px;
+}
+.page-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+.page-body {
+    min-height: 500px;
+    padding-bottom: 48px;
+}
+.page-footer {
+    padding: 32px 0;
+    text-align: center;
+    background-color: #fff;
+    .nav-list {
+        margin-bottom: 24px;
+        a {
+            color: #666;
+        }
+    }
+}

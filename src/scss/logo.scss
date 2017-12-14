@@ -1,0 +1,17 @@
+@import "var";
+
+.page-logo {
+
+}
+.editor {
+    height: 350px;
+    background-image: url("/static/img/background-transparent.png");
+    .svg-box {
+        width: 100px;
+        padding-top: 112px;
+        margin: 0 auto;
+        svg {
+            width: 100%;
+        }
+    }
+}

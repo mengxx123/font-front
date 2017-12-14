@@ -2,11 +2,8 @@
     <div class="page-about">
         <ui-header></ui-header>
         <main class="page-body">
-            <div class="container container-main">
-                <article class="ui-article article-box">
-                    <h1>关于</h1>
-                    <p>一个艺术字体与特色字体在线预览工具。</p>
-                </article>
+            <div class="container">
+                一个艺术字体与特色字体在线预览工具。
             </div>
         </main>
         <ui-footer></ui-footer>

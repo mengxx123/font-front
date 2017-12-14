@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Home = resolve => require(['@/views/Home'], resolve)
+const Font = resolve => require(['@/views/Font'], resolve)
+const FontDetail = resolve => require(['@/views/FontDetail'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Help = resolve => require(['@/views/Help'], resolve)
 const Copyright = resolve => require(['@/views/Copyright'], resolve)
+
+const Logo = resolve => require(['@/views/Logo'], resolve)
+const Download = resolve => require(['@/views/Download'], resolve)
 
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
@@ -15,9 +19,16 @@ const APP_NAME = '云设'
 let routes = [
     {
         path: '/',
-        component: Home,
+        component: Font,
         meta: {
             title: '首页'
+        }
+    },
+    {
+        path: '/fonts/:id',
+        component: FontDetail,
+        meta: {
+            title: '字体详情'
         }
     },
     {
@@ -25,6 +36,20 @@ let routes = [
         component: About,
         meta: {
             title: '关于'
+        }
+    },
+    {
+        path: '/logo',
+        component: Logo,
+        meta: {
+            title: 'Logo'
+        }
+    },
+    {
+        path: '/logo/download',
+        component: Download,
+        meta: {
+            title: '下载'
         }
     },
     {
