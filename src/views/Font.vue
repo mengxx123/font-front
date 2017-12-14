@@ -11,9 +11,7 @@
                             <option v-for="font in fonts" :value="font.name">{{ font.name }}</option>
                         </select>
                         大小
-                        <select>
-                            <option>中型字</option>
-                        </select>
+                        <input v-model="size">
                         文字颜色
                         <input v-model="color">
                         背景颜色
@@ -21,6 +19,7 @@
                     </div>
                     <button class="btn btn-primary" @click="makeFont">点击生成</button>
                     <h2 class="preview">预览</h2>
+                    <div>鼠标右键另存为（移动端长按图片保存）</div>
                     <div>
                         <img class="preview-img" :src="image">
                     </div>
@@ -45,8 +44,9 @@
     export default {
         data () {
             return {
-                text: '小明',
+                text: '云设',
                 font: '华康娃娃',
+                size: 36,
                 color: '#000000',
                 bgColor: '#ffffff',
                 image: 'http://localhost:1027/tmp/47fe4440-dfda-11e7-a3e1-71844063d4aa.svg',
@@ -80,7 +80,7 @@
             makeFont() {
                 console.log('请求')
                 console.log(encodeURIComponent(this.color))
-                let url = `/font?text=${encodeURIComponent(this.text)}&fill=${encodeURIComponent(this.color)}&font=${encodeURIComponent(this.font)}`
+                let url = `/font?text=${encodeURIComponent(this.text)}&fill=${encodeURIComponent(this.color)}&font=${encodeURIComponent(this.font)}&size=${this.size}`
                 this.$http.get(url).then(
                     response => {
                         let data = response.data
