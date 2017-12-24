@@ -12,12 +12,15 @@
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav" id="menu-layoutit">
-                     <!--<li class="nav-item">-->
-                        <!--<router-link class="nav-link" to="/">首页</router-link>-->
-                    <!--</li>-->
-                    <!--<li class="nav-item">-->
-                        <!--<a class="nav-link" href="/live">便民工具</a>-->
-                    <!--</li>-->
+                     <li class="nav-item">
+                        <router-link class="nav-link" to="/">首页</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/fonts">所有字体</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://icon.yunser.com" target="_blank">图标</a>
+                    </li>
                     <!--<li class="nav-item">-->
                         <!--<a class="nav-link" href="/study">学习工具</a>-->
                     <!--</li>-->

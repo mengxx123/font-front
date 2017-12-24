@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Font = resolve => require(['@/views/Font'], resolve)
+const Home = resolve => require(['@/views/Home'], resolve)
 const FontDetail = resolve => require(['@/views/FontDetail'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Help = resolve => require(['@/views/Help'], resolve)
@@ -19,9 +20,16 @@ const APP_NAME = '云设'
 let routes = [
     {
         path: '/',
-        component: Font,
+        component: Home,
         meta: {
             title: '首页'
+        }
+    },
+    {
+        path: '/fonts',
+        component: Font,
+        meta: {
+            title: '所有字体'
         }
     },
     {

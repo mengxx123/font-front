@@ -34,7 +34,7 @@
         position: relative;
         width: 240px;
         height: 104px;
-        padding-top: 16px;
+        padding: 16px;
         margin: 0 auto 16px auto;
         border: 1px solid #dddddd;
         &.active {
@@ -64,7 +64,19 @@
     }
     .img {
         display: block;
-        width: 160px;
+        max-width: 160px;
+        max-height: 40px;
         margin: 0 auto;
     }
+    .tags {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        .tag-item {
+            margin-right: 8px;
+        }
+    }
+}
+.keyword {
+    margin-bottom: 16px;
 }
