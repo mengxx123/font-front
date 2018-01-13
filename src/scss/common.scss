@@ -1,18 +1,7 @@
-html,
-body,
-#app,
-.page {
-    height: 100%;
+.ui-page-header {
+    z-index: 100;
+}
+
+body {
     background-color: #f1f1f1;
-}
-.container-main {
-    padding-top: 32px;
-}
-.page-header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-}
-.page-body {
-    min-height: 500px;
-    padding-bottom: 48px;
 }

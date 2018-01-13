@@ -1,41 +1,46 @@
 <template>
-    <div class="page-home">
-        <ui-header></ui-header>
-        <main class="page-body">
-            <div class="container container-main">
-                <div class="create-box">
-                    <textarea class="form-control text" v-model="text" placeholder="输入文字后，选择字体，点击生成！"></textarea>
-                    <div>
-                        字体:
-                        <select v-model="font">
-                            <option v-for="font in fonts" :value="font.name">{{ font.name }}</option>
-                        </select>
-                        大小
-                        <input v-model="size">
-                        文字颜色
-                        <input v-model="color">
-                        背景颜色
-                        <input v-model="bgColor">
-                    </div>
-                    <button class="btn btn-primary" @click="makeFont">点击生成</button>
-                    <h2 class="preview">预览</h2>
-                    <div>鼠标右键另存为（移动端长按图片保存）</div>
-                    <div>
-                        <img class="preview-img" :src="image">
-                    </div>
-                    <ul class="row font-list">
-                        <li class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="f in fonts">
-                            <div class="item" :class="{active: f.name === font}" @click="selectFont(f)">
-                                <img class="img" :src="apiDomain + f.image">
-                                <!--{{ font.name }}-->
-                            </div>
-                        </li>
-                    </ul>
+    <my-page title="云设字体">
+        <div class="create-box">
+            <div class="create-box-right">
+                <ul class="font-list">
+                    <li class="" v-for="f in fonts">
+                        <div class="item" :class="{active: f.name === font}" @click="selectFont(f)">
+                            <img class="img" :src="apiDomain + f.image">
+                            <!--{{ font.name }}-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="create-box-left">
+                <my-form-item label="内容">
+                    <ui-text-field v-model="text" hintText="输入文字后，选择字体，点击生成！" multiLine :rows="3" :rowsMax="6"/>
+                </my-form-item>
+                <my-form-item label="字体">
+                    <ui-select-field v-model="font" maxHeight="200">
+                        <ui-menu-item :value="font.name" :title="font.name" v-for="font in fonts" />
+                    </ui-select-field>
+                </my-form-item>
+                <my-form-item label="大小">
+                    <ui-text-field v-model="size" />
+                </my-form-item>
+                <my-form-item label="文字颜色">
+                    <ui-text-field v-model="color"/>
+                </my-form-item>
+                <my-form-item label="背景颜色">
+                    <ui-text-field v-model="bgColor"/>
+                </my-form-item>
+                <my-form-item>
+                    <ui-raised-button label="点击生成" primary @click="makeFont"/>
+                </my-form-item>
+
+                <h2 class="preview">预览</h2>
+                <div>鼠标右键另存为（移动端长按图片保存）</div>
+                <div>
+                    <img class="preview-img" :src="image">
                 </div>
             </div>
-        </main>
-        <ui-footer></ui-footer>
-    </div>
+        </div>
+    </my-page>
 </template>
 
 <script>
@@ -76,6 +81,7 @@
             },
             selectFont(font) {
                 this.font = font.name
+                this.makeFont()
             },
             makeFont() {
                 console.log('请求')
@@ -99,5 +105,30 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import "../scss/var";
+
+    .create-box {
+        @include clearfix;
+        .create-box-left {
+            float: left;
+            width: 400px;
+        }
+        .create-box-right {
+            float: left;
+            width: 300px;
+            height: 500px;
+            margin-right: 16px;
+            overflow: hidden;
+            &:hover {
+                overflow: auto;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .create-box-right {
+            display: none;
+        }
+    }
 </style>

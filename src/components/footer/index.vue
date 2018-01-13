@@ -5,7 +5,7 @@
                 <router-link to="/about">关于</router-link>&nbsp;|&nbsp;
                 <router-link to="/copyright">版权说明</router-link>
             </div>
-            <div class="copyright">© 2016-2018 <a href="">云设</a></div>
+            <div class="copyright">© 2016-2018 <a href="https://yunser.com/" target="_blank">云设</a></div>
         </div>
     </footer>
 </template>

@@ -1,30 +1,23 @@
 <template>
-    <div class="page-home">
-        <ui-header></ui-header>
-        <main class="page-body">
-            <div class="container container-main">
-                <div class="create-box">
-                    <input class="keyword" v-model="keyword" placeholder="输入关键词进行筛选">
-
-                    <div>已经收录 {{ fonts.length }} 个艺术字体！</div>
-                    <ul class="row font-list">
-                        <li class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="f in filterFonts">
-                            <div class="item" @click="selectFont(f)">
-                                <router-link class="link" :to="'/fonts/' + f.id">
-                                    <img class="img" :src="apiDomain + f.image">
-                                    <!--{{ font.name }}-->
-                                    <div class="tags" v-if="f.tags">
-                                        <span class="tag-item badge" v-for="tag in f.tags">{{ tag }}</span>
-                                    </div>
-                                </router-link>
+    <my-page title="云设字体">
+        <div class="create-box">
+            <ui-text-field v-model="keyword" hintText="输入关键词进行筛选"/>
+            <div class="all">已经收录 {{ fonts.length }} 个艺术字体！</div>
+            <ul class="row font-list">
+                <li class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="f in filterFonts">
+                    <div class="item" @click="selectFont(f)">
+                        <router-link class="link" :to="'/fonts/' + f.id">
+                            <img class="img" :src="apiDomain + f.image">
+                            <!--{{ font.name }}-->
+                            <div class="tags" v-if="f.tags">
+                                <ui-badge class="tag-item" :content="tag" v-for="tag in f.tags" />
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </main>
-        <ui-footer></ui-footer>
-    </div>
+                        </router-link>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </my-page>
 </template>
 
 <script>
@@ -72,4 +65,8 @@
 </script>
 
 <style scoped>
+    .all {
+        margin-bottom: 16px;
+        color: #999;
+    }
 </style>

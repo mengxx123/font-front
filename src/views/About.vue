@@ -1,16 +1,10 @@
 <template>
-    <div class="page-about">
-        <ui-header></ui-header>
-        <main class="page-body">
-            <div class="container container-main">
-                <article class="ui-article article-box">
-                    <h1>关于</h1>
-                    <p>一个艺术字体与特色字体在线预览工具。</p>
-                </article>
-            </div>
-        </main>
-        <ui-footer></ui-footer>
-    </div>
+    <my-page title="关于">
+        <article class="ui-article article-box">
+            <h1>关于</h1>
+            <p>一个艺术字体与特色字体在线预览工具。</p>
+        </article>
+    </my-page>
 </template>
 
 <script>

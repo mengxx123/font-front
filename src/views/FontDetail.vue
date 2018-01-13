@@ -1,21 +1,15 @@
 <template>
-    <div class="page-home">
-        <ui-header></ui-header>
-        <main class="page-body">
-            <div class="container container-main">
-                <div class="create-box">
-                    <div v-if="font">
-                        <img class="img" :src="apiDomain + font.image">
-                        <!--{{ font.name }}-->
-                        <div class="tags" v-if="font.tags">
-                            <span class="tag-item badge" v-for="tag in font.tags">{{ tag }}</span>
-                        </div>
-                    </div>
+    <my-page :title="title">
+        <div class="create-box">
+            <div v-if="font">
+                <img class="img" :src="apiDomain + font.image">
+                <!--{{ font.name }}-->
+                <div class="tags" v-if="font.tags">
+                    <ui-badge class="tag-item" :content="tag" v-for="tag in font.tags" />
                 </div>
             </div>
-        </main>
-        <ui-footer></ui-footer>
-    </div>
+        </div>
+    </my-page>
 </template>
 
 <script>
@@ -24,6 +18,7 @@
     export default {
         data () {
             return {
+                title: '字体',
                 font: null,
                 apiDomain: apiDomain
             }
@@ -39,6 +34,7 @@
                         let data = response.data
                         console.log(data)
                         this.font = data
+                        this.title = '字体' + this.font.name
                     },
                     response => {
                         console.log(response)
@@ -49,4 +45,7 @@
 </script>
 
 <style scoped>
+    .tag-item {
+        margin-right: 8px;
+    }
 </style>
