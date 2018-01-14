@@ -5,7 +5,7 @@
                 <img class="img" :src="apiDomain + font.image">
                 <!--{{ font.name }}-->
                 <div class="tags" v-if="font.tags">
-                    <ui-badge class="tag-item" :content="tag" v-for="tag in font.tags" />
+                    <ui-badge class="tag-item" :content="tag" v-for="tag in font.tags" :key="tag" />
                 </div>
             </div>
         </div>

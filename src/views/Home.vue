@@ -17,7 +17,7 @@
                 </my-form-item>
                 <my-form-item label="字体">
                     <ui-select-field v-model="font" maxHeight="200">
-                        <ui-menu-item :value="font.name" :title="font.name" v-for="font in fonts" />
+                        <ui-menu-item :value="font.name" :title="font.name" v-for="font in fonts" :key="font" />
                     </ui-select-field>
                 </my-form-item>
                 <my-form-item label="大小">
