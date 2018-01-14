@@ -1,5 +1,5 @@
 <template>
-    <div class="page page-article">
+    <my-page title="下载">
         <!--<ui-header></ui-header>-->
         <header class="page-article-header">
             <div class="container">
@@ -16,8 +16,7 @@
                 </article>
             </div>
         </main>
-        <!--<ui-footer></ui-footer>-->
-    </div>
+    </my-page>
 </template>
 
 <script>

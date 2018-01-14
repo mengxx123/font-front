@@ -4,13 +4,13 @@
             <ui-text-field v-model="keyword" hintText="输入关键词进行筛选"/>
             <div class="all">已经收录 {{ fonts.length }} 个艺术字体！</div>
             <ul class="row font-list">
-                <li class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="f in filterFonts">
+                <li class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="f in filterFonts" :key="f.id">
                     <div class="item" @click="selectFont(f)">
                         <router-link class="link" :to="'/fonts/' + f.id">
                             <img class="img" :src="apiDomain + f.image">
                             <!--{{ font.name }}-->
                             <div class="tags" v-if="f.tags">
-                                <ui-badge class="tag-item" :content="tag" v-for="tag in f.tags" />
+                                <ui-badge class="tag-item" :content="tag" v-for="tag in f.tags" :key="tag" />
                             </div>
                         </router-link>
                     </div>

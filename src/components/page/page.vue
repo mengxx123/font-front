@@ -3,10 +3,13 @@
         <div slot="drawer">
             <ui-appbar title=""></ui-appbar>
             <ui-list @itemClick="toggle()">
-                <ui-list-item title="首页" to="/">
+                <ui-list-item title="字体生成" to="/">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="所有字体" to="/fonts">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="印章生成" to="/seal">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <!--<ui-list-item title="Logo" to="/logo">-->

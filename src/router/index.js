@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Font = resolve => require(['@/views/Font'], resolve)
+const Seal = resolve => require(['@/views/Seal'], resolve)
 const Home = resolve => require(['@/views/Home'], resolve)
 const FontDetail = resolve => require(['@/views/FontDetail'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
@@ -15,85 +16,48 @@ const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
 Vue.use(Router)
 
-const APP_NAME = '云设'
-
 let routes = [
     {
         path: '/',
-        component: Home,
-        meta: {
-            title: '首页'
-        }
+        component: Home
     },
     {
         path: '/fonts',
-        component: Font,
-        meta: {
-            title: '所有字体'
-        }
+        component: Font
+    },
+    {
+        path: '/seal',
+        component: Seal
     },
     {
         path: '/fonts/:id',
-        component: FontDetail,
-        meta: {
-            title: '字体详情'
-        }
+        component: FontDetail
     },
     {
         path: '/about',
-        component: About,
-        meta: {
-            title: '关于'
-        }
+        component: About
     },
     {
         path: '/logo',
-        component: Logo,
-        meta: {
-            title: 'Logo'
-        }
+        component: Logo
     },
     {
         path: '/logo/download',
-        component: Download,
-        meta: {
-            title: '下载'
-        }
+        component: Download
     },
     {
         path: '/help',
-        component: Help,
-        meta: {
-            title: '帮助'
-        }
+        component: Help
     },
     {
         path: '/copyright',
-        component: Copyright,
-        meta: {
-            title: '帮助'
-        }
-    },
-    {
-        path: '/404',
-        component: Error404,
-        meta: {
-            title: '页面找不到了'
-        }
+        component: Copyright
     },
     {
         path: '*',
-        redirect: '/404'
+        component: Error404
     }
 ]
-
-function getTitle(title) {
-    if (title) {
-        return title
-    } else {
-        return APP_NAME
-    }
-}
 
 let router = new Router({
     mode: 'history',
@@ -104,15 +68,6 @@ let router = new Router({
             y: 0
         }
     }
-})
-
-router.beforeEach((to, from, next) => {
-    if (to.meta && to.meta.title) {
-        document.title = getTitle(to.meta.title)
-    } else {
-        document.title = getTitle()
-    }
-    next()
 })
 
 export default router
