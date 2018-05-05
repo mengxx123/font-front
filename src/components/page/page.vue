@@ -9,9 +9,6 @@
                 <ui-list-item title="所有字体" to="/fonts">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
-                <ui-list-item title="印章生成" to="/seal">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
                 <!--<ui-list-item title="Logo" to="/logo">-->
                     <!--<ui-icon slot="left" value="grade"/>-->
                 <!--</ui-list-item>-->

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Font = resolve => require(['@/views/Font'], resolve)
-const Seal = resolve => require(['@/views/Seal'], resolve)
 const Home = resolve => require(['@/views/Home'], resolve)
 const FontDetail = resolve => require(['@/views/FontDetail'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
@@ -24,10 +23,6 @@ let routes = [
     {
         path: '/fonts',
         component: Font
-    },
-    {
-        path: '/seal',
-        component: Seal
     },
     {
         path: '/fonts/:id',
