@@ -1,134 +1,194 @@
 <template>
-    <my-page title="云设字体">
-        <div class="create-box">
-            <div class="create-box-right">
-                <ul class="font-list">
-                    <li class="" v-for="f in fonts">
-                        <div class="item" :class="{active: f.name === font}" @click="selectFont(f)">
-                            <img class="img" :src="apiDomain + f.image">
-                            <!--{{ font.name }}-->
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="create-box-left">
-                <my-form-item label="内容">
-                    <ui-text-field v-model="text" hintText="输入文字后，选择字体，点击生成！" multiLine :rows="3" :rowsMax="6"/>
-                </my-form-item>
-                <my-form-item label="字体">
-                    <ui-select-field v-model="font" maxHeight="200">
-                        <ui-menu-item :value="font.name" :title="font.name" v-for="font in fonts" :key="font" />
-                    </ui-select-field>
-                </my-form-item>
-                <my-form-item label="大小">
-                    <ui-text-field v-model="size" />
-                </my-form-item>
-                <my-form-item label="文字颜色">
-                    <ui-text-field v-model="color"/>
-                </my-form-item>
-                <my-form-item label="背景颜色">
-                    <ui-text-field v-model="bgColor"/>
-                </my-form-item>
-                <my-form-item>
-                    <ui-raised-button label="点击生成" primary @click="makeFont"/>
-                </my-form-item>
-
-                <h2 class="preview">预览</h2>
-                <div>鼠标右键另存为（移动端长按图片保存）</div>
-                <div>
-                    <img class="preview-img" :src="image">
-                </div>
-            </div>
+    <my-page title="字体" :page="page">
+        <div class="common-container">
+            <app-list :data="groups" />
         </div>
     </my-page>
 </template>
 
 <script>
-    import {apiDomain} from '@/config'
-
+    /* eslint-disable */
     export default {
         data () {
             return {
-                text: '云设',
-                font: '华康娃娃',
-                size: 36,
-                color: '#000000',
-                bgColor: '#ffffff',
-                image: 'http://localhost:1027/tmp/47fe4440-dfda-11e7-a3e1-71844063d4aa.svg',
-                fonts: [],
-                apiDomain: apiDomain
+                groups: [
+                    {
+                        // name: '分类',
+                        apps: [
+                            {
+                                name: '字体生成',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: '/make'
+                            },
+                            {
+                                name: '所有字体',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: '/fonts'
+                            },
+                            {
+                                name: '字体商用查询',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'https://demos.yunser.com/font/font-use',
+                                target: '_blank'
+                            },
+                            {
+                                name: '字体英文名查询',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'https://demo2.yunser.com/font/font-family.html',
+                                target: '_blank'
+                            },
+                            {
+                                name: '字体编辑器',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'http://fontstore.baidu.com/static/editor/index.html',
+                                target: '_blank'
+                            },
+                            {
+                                name: '字体安装检测',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'https://demo2.yunser.com/font/font_check.html',
+                                target: '_blank'
+                            },
+                            {
+                                name: '字体预览',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'https://demo2.yunser.com/font/preview.html',
+                                target: '_blank'
+                            },
+                            {
+                                name: '字体查看',
+                                desc: '',
+                                icon: 'https://icons.yunser.com/icons/font.svg',
+                                to: 'xxx',
+                                href: 'https://demo2.yunser.com/font/viewer.html',
+                                target: '_blank'
+                            },
+                        ]
+                    },
+                ],
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'search',
+                            href: 'https://search.yunser.com?utm_source=font',
+                            target: '_blank',
+                            title: '搜索'
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'apps',
+                            href: 'https://app.yunser.com?utm_source=app',
+                            target: '_blank',
+                            title: '应用'
+                        }
+                    ]
+                }
             }
+        },
+        computed: {
         },
         mounted() {
-            this.init()
         },
         methods: {
-            init() {
-                console.log(encodeURI('#f000'))
-                this.makeFont()
-
-                this.$http.get('/fonts').then(
-                    response => {
-                        let data = response.data
-                        console.log(data)
-                        if (data.code === 0) {
-                            this.fonts = data.data
-                        }
-                    },
-                    response => {
-                        console.log(response)
-                    })
-            },
-            selectFont(font) {
-                this.font = font.name
-                this.makeFont()
-            },
-            makeFont() {
-                console.log('请求')
-                console.log(encodeURIComponent(this.color))
-                let url = `/font?text=${encodeURIComponent(this.text)}&fill=${encodeURIComponent(this.color)}&font=${encodeURIComponent(this.font)}&size=${this.size}`
-                this.$http.get(url).then(
-                    response => {
-                        let data = response.data
-                        console.log(data)
-                        if (data.code === 0) {
-                            this.image = apiDomain + data.data
-                        } else {
-                            alert('系统出错')
-                        }
-                    },
-                    response => {
-                        console.log(response)
-                    })
-            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    @import "../scss/var";
+@import '../scss/var';
 
-    .create-box {
-        @include clearfix;
-        .create-box-left {
-            float: left;
-            width: 400px;
-        }
-        .create-box-right {
-            float: left;
-            width: 300px;
-            height: 500px;
-            margin-right: 16px;
-            overflow: hidden;
-            &:hover {
-                overflow: auto;
+.tool-list {
+    max-width: 840px;
+    margin: 0 auto;
+    @include clearfix;
+    .list-item {
+        position: relative;
+        float: left;
+        width: 260px;
+        height: 96px;
+        padding: 8px;
+        margin: 2px 16px 16px 2px;
+        background-color: #fff;
+        //border: 1px solid #ccc;
+        &:hover {
+            background-color: #f9f9f9;
+            // box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+            //border-color: #09c;
+            .icon {
+                display: block;
             }
         }
-    }
-
-    @media screen and (max-width: 1000px) {
-        .create-box-right {
-            display: none;
+        &.active {
+            border: 1px solid #f00;
         }
     }
+    a {
+        display: block;
+        height: 100%;
+        color: #666;
+        cursor: pointer;
+    }
+    .img {
+        float: left;
+        width: 72px;
+        height: 72px;
+        margin-right: 16px;
+        background-color: #fff;
+        border: 1px solid #e9e9e9;
+        border-radius: 8px;
+    }
+    .info {
+        float: left;
+    }
+    .text {
+        font-size: 18px;
+        color: #000;
+    }
+    .header {
+        overflow: hidden;
+    }
+    .desc {
+        max-width: 150px;
+        margin-top: 8px;
+    }
+    .icon-heart {
+        display: none;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        &:hover {
+            color: #f00;
+        }
+    }
+    .icon-close {
+        display: none;
+        position: absolute;
+        top: 32px;
+        right: 8px;
+        &:hover {
+            color: #f00;
+        }
+    }
+}
+@media all and (max-width: 400px){
+    .tool-list {
+        .list-item {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}
 </style>

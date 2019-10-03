@@ -7,6 +7,7 @@ const FontDetail = resolve => require(['@/views/FontDetail'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Help = resolve => require(['@/views/Help'], resolve)
 const Copyright = resolve => require(['@/views/Copyright'], resolve)
+const Make = resolve => require(['@/views/Make'], resolve)
 
 const Logo = resolve => require(['@/views/Logo'], resolve)
 const Download = resolve => require(['@/views/Download'], resolve)
@@ -19,6 +20,10 @@ let routes = [
     {
         path: '/',
         component: Home
+    },
+    {
+        path: '/make',
+        component: Make
     },
     {
         path: '/fonts',
